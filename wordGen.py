@@ -10,5 +10,5 @@ WORDS = response.content.splitlines()
 random.shuffle(WORDS)
 
 for i in WORDS:
- q    print(str(i))
+    print(str(i))
     time.sleep(1.5)
