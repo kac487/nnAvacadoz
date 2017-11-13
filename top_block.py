@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sun Nov 12 17:58:06 2017
+# Generated: Sun Nov 12 19:53:33 2017
 ##################################################
 
 if __name__ == '__main__':
@@ -108,14 +108,16 @@ class top_block(gr.top_block, Qt.QWidget):
         
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_time_sink_x_0_win)
-        self.blocks_wavfile_sink_0 = blocks.wavfile_sink("/home/kac487/Documents/gnuradio/listenFile.wav", 1, samp_rate, 8)
-        self.audio_source_0 = audio.source(samp_rate, "", True)
+        self.blocks_wavfile_source_0 = blocks.wavfile_source("/home/kac487/repo/nnAvacadoz/data/kyle_TrainFile.wav", False)
+        self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, 0)
+        self.audio_sink_0 = audio.sink(samp_rate, "", True)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
-        self.connect((self.audio_source_0, 0), (self.qtgui_time_sink_x_0, 0))    
+        self.connect((self.blocks_delay_0, 0), (self.qtgui_time_sink_x_0, 0))    
+        self.connect((self.blocks_wavfile_source_0, 0), (self.audio_sink_0, 0))    
+        self.connect((self.blocks_wavfile_source_0, 0), (self.blocks_delay_0, 0))    
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "top_block")

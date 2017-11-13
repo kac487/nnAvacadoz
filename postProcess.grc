@@ -109,49 +109,6 @@
     </param>
   </block>
   <block>
-    <key>analog_frequency_modulator_fc</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(280, 324)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>analog_frequency_modulator_fc_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>sensitivity</key>
-      <value>20000</value>
-    </param>
-  </block>
-  <block>
     <key>audio_sink</key>
     <param>
       <key>alias</key>
@@ -171,7 +128,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -199,7 +156,7 @@
     </param>
   </block>
   <block>
-    <key>audio_source</key>
+    <key>blocks_delay</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -213,16 +170,16 @@
       <value></value>
     </param>
     <param>
-      <key>device_name</key>
-      <value></value>
+      <key>delay</key>
+      <value>0</value>
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(240, 180)</value>
+      <value>(504, 404)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -230,7 +187,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>audio_source_0</value>
+      <value>blocks_delay_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -241,24 +198,20 @@
       <value>0</value>
     </param>
     <param>
-      <key>num_outputs</key>
+      <key>num_ports</key>
       <value>1</value>
     </param>
     <param>
-      <key>ok_to_block</key>
-      <value>True</value>
+      <key>type</key>
+      <value>float</value>
     </param>
     <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
+      <key>vlen</key>
+      <value>1</value>
     </param>
   </block>
   <block>
-    <key>blocks_wavfile_sink</key>
-    <param>
-      <key>bits_per_sample</key>
-      <value>8</value>
-    </param>
+    <key>blocks_stream_to_vector</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -273,15 +226,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>file</key>
-      <value>/home/kac487/Documents/gnuradio/listenFile.wav</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(784, 166)</value>
+      <value>(656, 404)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -289,15 +238,27 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_wavfile_sink_0</value>
+      <value>blocks_stream_to_vector_0</value>
     </param>
     <param>
-      <key>nchan</key>
+      <key>type</key>
+      <value>float</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>num_items</key>
+      <value>int(samp_rate*1.5)</value>
+    </param>
+    <param>
+      <key>vlen</key>
       <value>1</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
     </param>
   </block>
   <block>
@@ -316,11 +277,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>file</key>
-      <value>/home/kac487/Documents/gnuradio/testFile2.wav</value>
+      <value>/home/kac487/repo/nnAvacadoz/data/kyle_TrainFile.wav</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -348,58 +309,7 @@
     </param>
     <param>
       <key>repeat</key>
-      <value>True</value>
-    </param>
-  </block>
-  <block>
-    <key>hilbert_fc</key>
-    <param>
-      <key>beta</key>
-      <value>6.76</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(280, 492)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>hilbert_fc_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>num_taps</key>
-      <value>128</value>
-    </param>
-    <param>
-      <key>win</key>
-      <value>firdes.WIN_HAMMING</value>
+      <value>False</value>
     </param>
   </block>
   <block>
@@ -446,7 +356,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1040, 462)</value>
+      <value>(1040, 494)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -687,209 +597,6 @@
     <param>
       <key>ymin</key>
       <value>-140</value>
-    </param>
-  </block>
-  <block>
-    <key>qtgui_time_raster_sink_x</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1016, 696)</value>
-    </param>
-    <param>
-      <key>gui_hint</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>grid</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>qtgui_time_raster_sink_x_0</value>
-    </param>
-    <param>
-      <key>zmax</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>zmin</key>
-      <value>-1</value>
-    </param>
-    <param>
-      <key>alpha1</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color1</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label1</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha10</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color10</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label10</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha2</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color2</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label2</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha3</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color3</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label3</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha4</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color4</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label4</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha5</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color5</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label5</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha6</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color6</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label6</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha7</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color7</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label7</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha8</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color8</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label8</key>
-      <value></value>
-    </param>
-    <param>
-      <key>alpha9</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>color9</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>label9</key>
-      <value></value>
-    </param>
-    <param>
-      <key>mult</key>
-      <value>[]</value>
-    </param>
-    <param>
-      <key>name</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>ncols</key>
-      <value></value>
-    </param>
-    <param>
-      <key>nrows</key>
-      <value></value>
-    </param>
-    <param>
-      <key>nconnections</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>offset</key>
-      <value>[]</value>
-    </param>
-    <param>
-      <key>samp_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>float</value>
-    </param>
-    <param>
-      <key>update_time</key>
-      <value>0.10</value>
     </param>
   </block>
   <block>
@@ -1196,7 +903,7 @@
     </param>
     <param>
       <key>size</key>
-      <value>8192</value>
+      <value>int(samp_rate*1.5)</value>
     </param>
     <param>
       <key>srate</key>
@@ -1283,7 +990,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1040, 366)</value>
+      <value>(1040, 390)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -1471,14 +1178,26 @@
     </param>
   </block>
   <connection>
-    <source_block_id>audio_source_0</source_block_id>
-    <sink_block_id>blocks_wavfile_sink_0</sink_block_id>
+    <source_block_id>blocks_delay_0</source_block_id>
+    <sink_block_id>blocks_stream_to_vector_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>audio_source_0</source_block_id>
+    <source_block_id>blocks_delay_0</source_block_id>
     <sink_block_id>qtgui_time_sink_x_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_wavfile_source_0</source_block_id>
+    <sink_block_id>audio_sink_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_wavfile_source_0</source_block_id>
+    <sink_block_id>blocks_delay_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
