@@ -3,7 +3,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Top Block
-# Generated: Sun Nov 12 20:20:37 2017
+# Generated: Thu Nov 16 18:48:34 2017
 ##################################################
 
 if __name__ == '__main__':
@@ -17,13 +17,13 @@ if __name__ == '__main__':
             print "Warning: failed to XInitThreads()"
 
 from PyQt4 import Qt
-from gnuradio import audio
 from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import gr
 from gnuradio import qtgui
 from gnuradio.eng_option import eng_option
 from gnuradio.filter import firdes
+from gnuradio.qtgui import Range, RangeWidget
 from optparse import OptionParser
 import sip
 import sys
@@ -58,15 +58,19 @@ class top_block(gr.top_block, Qt.QWidget):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 48000
+        self.delayRange = delayRange = 0
 
         ##################################################
         # Blocks
         ##################################################
+        self._delayRange_range = Range(0, 24000, 1, 0, 200)
+        self._delayRange_win = RangeWidget(self._delayRange_range, self.set_delayRange, "delayRange", "counter_slider", int)
+        self.top_layout.addWidget(self._delayRange_win)
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
         	int(samp_rate*1.5), #size
         	samp_rate, #samp_rate
         	"", #name
-        	1 #number of inputs
+        	2 #number of inputs
         )
         self.qtgui_time_sink_x_0.set_update_time(1/60)
         self.qtgui_time_sink_x_0.set_y_axis(-1, 1)
@@ -95,7 +99,7 @@ class top_block(gr.top_block, Qt.QWidget):
         alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
                   1.0, 1.0, 1.0, 1.0, 1.0]
         
-        for i in xrange(1):
+        for i in xrange(2):
             if len(labels[i]) == 0:
                 self.qtgui_time_sink_x_0.set_line_label(i, "Data {0}".format(i))
             else:
@@ -108,14 +112,17 @@ class top_block(gr.top_block, Qt.QWidget):
         
         self._qtgui_time_sink_x_0_win = sip.wrapinstance(self.qtgui_time_sink_x_0.pyqwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_time_sink_x_0_win)
-        self.blocks_wavfile_sink_0 = blocks.wavfile_sink("/home/kac487/repo/nnAvacadoz/data/ambika_TrainFile2.wav", 1, samp_rate, 8)
-        self.audio_source_0 = audio.source(samp_rate, "", True)
+        self.blocks_wavfile_source_0 = blocks.wavfile_source("/home/kac487/repo/nnAvacadoz/data/kyle_TrainFile.wav", False)
+        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
+        self.blocks_delay_0 = blocks.delay(gr.sizeof_float*1, delayRange)
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.audio_source_0, 0), (self.blocks_wavfile_sink_0, 0))    
-        self.connect((self.audio_source_0, 0), (self.qtgui_time_sink_x_0, 0))    
+        self.connect((self.blocks_delay_0, 0), (self.qtgui_time_sink_x_0, 0))    
+        self.connect((self.blocks_throttle_0, 0), (self.blocks_delay_0, 0))    
+        self.connect((self.blocks_throttle_0, 0), (self.qtgui_time_sink_x_0, 1))    
+        self.connect((self.blocks_wavfile_source_0, 0), (self.blocks_throttle_0, 0))    
 
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "top_block")
@@ -128,7 +135,15 @@ class top_block(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+        self.blocks_throttle_0.set_sample_rate(self.samp_rate)
         self.qtgui_time_sink_x_0.set_samp_rate(self.samp_rate)
+
+    def get_delayRange(self):
+        return self.delayRange
+
+    def set_delayRange(self, delayRange):
+        self.delayRange = delayRange
+        self.blocks_delay_0.set_dly(self.delayRange)
 
 
 def main(top_block_cls=top_block, options=None):
